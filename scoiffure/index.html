@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       CONFIG — SEUL BLOC À MODIFIER PAR L'AGENT
+       ============================================================ -->
+  <script>
+const CLIENT = {
+  nom:            "S Coiffure",
+  metier:         "Coiffure & Soins Capillaires",
+  accroche:       "Depuis 1932, l'art de sublimer vos cheveux à Annemasse",
+  description:    "Fondé en 1932, S Coiffure est un salon de référence du bassin annécien, porté par une équipe passionnée et créative. Coupes, colorations, balayages, soins profonds — chaque prestation est réalisée avec des produits haut de gamme, respectueux du cuir chevelu et de la fibre capillaire. Nous vous accueillons sur rendez-vous du mardi au samedi, dans une atmosphère chaleureuse au cœur d'Annemasse.",
+  ville:          "Annemasse",
+  departement:    "Haute-Savoie",
+  tel:            "04 50 37 30 69",
+  email:          "contact@scoiffure1932.com",
+  adresse:        "46 rue des Tournelles, 74100 Annemasse",
+  siren:          "NA",
+  anneeCreation:  1932,
+  horaires: [
+    { jour: "Lundi",    heure: "Fermé" },
+    { jour: "Mardi",    heure: "9h – 19h" },
+    { jour: "Mercredi", heure: "9h – 19h" },
+    { jour: "Jeudi",    heure: "9h – 19h" },
+    { jour: "Vendredi", heure: "9h – 19h" },
+    { jour: "Samedi",   heure: "9h – 18h" },
+    { jour: "Dimanche", heure: "Fermé" }
+  ],
+  couleurBg:      "#F9F5F0",
+  couleurFonce:   "#1A1410",
+  couleurAccent:  "#8B5C3E",
+  couleurSoft:    "#E6D8CC",
+  couleurTexte:   "#5C4A3C",
+  services: [
+    {
+      categorie: "Coupes",
+      icone: "✂",
+      items: [
+        { nom: "Coupe Femme",        prix: "À partir de 42€", detail: "Shampoing, coupe et brushing inclus" },
+        { nom: "Coupe Homme",        prix: "À partir de 22€", detail: "Shampoing, coupe et coiffage" },
+        { nom: "Coupe Enfant",       prix: "À partir de 16€", detail: "Jusqu'à 10 ans" },
+        { nom: "Brushing seul",      prix: "À partir de 28€", detail: "Mise en forme et séchage soigné" }
+      ]
+    },
+    {
+      categorie: "Couleurs & Techniques",
+      icone: "🎨",
+      items: [
+        { nom: "Coloration complète", prix: "À partir de 58€", detail: "Produits respectueux de la fibre capillaire" },
+        { nom: "Mèches",              prix: "À partir de 65€", detail: "Techniques personnalisées selon morphologie" },
+        { nom: "Balayage",            prix: "À partir de 72€", detail: "Effet naturel, lumineux et durable" },
+        { nom: "Couleur + Coupe",     prix: "À partir de 95€", detail: "Forfait complet coloration et coupe" }
+      ]
+    },
+    {
+      categorie: "Soins & Traitements",
+      icone: "💆",
+      items: [
+        { nom: "Soin profond",        prix: "À partir de 18€", detail: "Masque restructurant haute nutrition" },
+        { nom: "Soin lissant",        prix: "À partir de 25€", detail: "Traitement disciplinant et anti-frizz" },
+        { nom: "Soin cuir chevelu",   prix: "À partir de 20€", detail: "Traitement apaisant et rééquilibrant" }
+      ]
+    }
+  ],
+  valeurs: [
+    { sym: "①", titre: "Un savoir-faire depuis 1932", texte: "Plus de 90 ans de passion capillaire transmis de génération en génération au cœur d'Annemasse." },
+    { sym: "②", titre: "Produits haut de gamme",      texte: "Nous sélectionnons des formules douces, respectueuses du cuir chevelu et de la santé de vos cheveux." },
+    { sym: "③", titre: "Équipe créative & attentive", texte: "Chaque coupe, chaque couleur est pensée pour vous : votre visage, vos envies, votre style de vie." },
+    { sym: "④", titre: "Sur rendez-vous uniquement",  texte: "Pour vous garantir un accueil sans attente et un temps dédié à 100% à votre chevelure." }
+  ],
+  avis: [
+    { auteur: "Sandrine M.", texte: "Salon que je fréquente depuis des années. Le balayage que j'ai eu ce mois-ci est parfait, exactement la nuance que je voulais. L'équipe est douce et vraiment à l'écoute." },
+    { auteur: "Nathalie R.", texte: "Coupe et coloration impeccables. On sent que les produits sont de qualité, mes cheveux sont brillants et en bonne santé. Je recommande sans hésiter." },
+    { auteur: "Élodie P.",   texte: "J'avais les cheveux très abîmés, le soin profond proposé a vraiment fait une différence. Personnel agréable, cadre soigné. Je suis repartie ravie." }
+  ],
+  reseaux: { instagram: "#", facebook: "#" }
+};
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.title = `${CLIENT.metier} à ${CLIENT.ville} — ${CLIENT.nom}`;
+      document.querySelector('meta[name="description"]').content =
+        `${CLIENT.nom} — ${CLIENT.metier} à ${CLIENT.ville}. ${CLIENT.accroche}. Réservation : ${CLIENT.tel}`;
+    });
+  </script>
+  <meta name="description" content="" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Cormorant:ital@1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── VARIABLES ────────────────────────────────────────────── */
+    :root {
+      --bg:       #FAF7F2;
+      --fonce:    #1C1917;
+      --accent:   #C4956A;
+      --soft:     #E8DDD3;
+      --texte:    #6B6059;
+      --border:   rgba(196,149,106,0.18);
+      --border2:  rgba(28,25,23,0.1);
+      --serif:    'Cormorant Garamond', serif;
+      --sans:     'Jost', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--texte); overflow-x: hidden; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+    /* ── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 0;
+      transition: background .4s, padding .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      background: rgba(250,247,242,.96);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      box-shadow: 0 1px 0 var(--border2);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; }
+    .logo-nom {
+      font-family: var(--serif); font-size: 1.5rem; font-weight: 500;
+      color: var(--fonce); letter-spacing: .06em; line-height: 1;
+    }
+    .logo-metier {
+      font-family: var(--sans); font-size: .6rem; font-weight: 400;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); margin-top: 2px;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: .75rem; font-weight: 400; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--texte); text-decoration: none;
+      transition: color .2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: var(--accent);
+      transform: scaleX(0); transition: transform .25s;
+    }
+    .nav-links a:hover { color: var(--fonce); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-rdv {
+      font-family: var(--sans); font-size: .72rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--bg); background: var(--fonce);
+      text-decoration: none; padding: 10px 22px;
+      transition: background .25s;
+    }
+    .nav-rdv:hover { background: var(--accent); }
+
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .burger span { display: block; width: 24px; height: 1px; background: var(--fonce); transition: all .3s; }
+    .burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ──────────────────────────────────────────── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: var(--bg);
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif); font-size: 2.8rem; font-weight: 400;
+      color: var(--fonce); text-decoration: none; transition: color .2s;
+      letter-spacing: .04em;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mob-close {
+      position: absolute; top: 28px; right: 32px;
+      background: none; border: none; font-size: 1.6rem;
+      color: var(--texte); cursor: pointer;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--fonce);
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+
+    /* côté gauche — texte */
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 140px 64px 100px calc((100vw - 1120px) / 2 + 32px);
+      position: relative; z-index: 2;
+    }
+    @media (max-width: 1184px) {
+      .hero-left { padding-left: 32px; }
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; right: 0;
+      width: 1px; background: rgba(255,255,255,.1);
+    }
+
+    /* côté droit — fond texturé */
+    .hero-right {
+      background: #2A2220;
+      position: relative; overflow: hidden;
+    }
+    /* motif floral géométrique CSS */
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 30% 30%, rgba(196,149,106,.12) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(196,149,106,.08) 0%, transparent 40%);
+    }
+    .hero-ornament {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px; height: 320px;
+      border: 1px solid rgba(196,149,106,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-ornament::before {
+      content: '';
+      position: absolute; inset: 24px;
+      border: 1px solid rgba(196,149,106,.1);
+      border-radius: 50%;
+    }
+    .hero-ornament::after {
+      content: '';
+      position: absolute; inset: 56px;
+      border: 1px solid rgba(196,149,106,.08);
+      border-radius: 50%;
+    }
+    .ornament-sym {
+      font-family: var(--serif); font-size: 5rem;
+      color: rgba(196,149,106,.2); font-style: italic;
+      line-height: 1;
+    }
+    .hero-right-text {
+      position: absolute; bottom: 60px; left: 40px; right: 40px;
+    }
+    .hero-right-quote {
+      font-family: var(--serif); font-size: 1.3rem;
+      font-style: italic; color: rgba(255,255,255,.35);
+      line-height: 1.6; letter-spacing: .02em;
+    }
+
+    /* contenu hero gauche */
+    .hero-eyebrow {
+      font-family: var(--sans); font-size: .65rem; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeIn .6s .15s forwards;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: #FAF7F2; letter-spacing: .02em;
+      margin-bottom: 32px;
+      opacity: 0; animation: fadeIn .6s .3s forwards;
+    }
+    .hero-h1 em {
+      display: block; font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: .9rem; font-weight: 300; line-height: 1.85;
+      color: rgba(250,247,242,.5); max-width: 420px;
+      margin-bottom: 48px;
+      opacity: 0; animation: fadeIn .6s .45s forwards;
+    }
+
+    .hero-actions {
+      display: flex; flex-direction: column; gap: 14px; align-items: flex-start;
+      opacity: 0; animation: fadeIn .6s .6s forwards;
+    }
+    .btn-creme {
+      font-family: var(--sans); font-size: .75rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      background: var(--accent); color: var(--bg);
+      text-decoration: none; padding: 14px 32px;
+      transition: background .25s;
+    }
+    .btn-creme:hover { background: #b5825a; }
+    .btn-tel {
+      font-family: var(--serif); font-size: 1.05rem; font-style: italic;
+      color: rgba(250,247,242,.5); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: color .2s;
+    }
+    .btn-tel:hover { color: var(--accent); }
+    .btn-tel::before { content: '→'; font-style: normal; font-size: .85rem; }
+
+    /* ── PRÉSENTATION ─────────────────────────────────────────── */
+    #presentation {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .pres-inner {
+      display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;
+    }
+    .pres-label {
+      font-family: var(--sans); font-size: .65rem; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent);
+      writing-mode: vertical-rl;
+      padding-top: 8px;
+    }
+    .pres-right {}
+    .pres-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; line-height: 1.15; color: var(--fonce);
+      margin-bottom: 28px; letter-spacing: .02em;
+    }
+    .pres-title em { font-style: italic; color: var(--accent); }
+    .pres-texte {
+      font-size: .9rem; font-weight: 300; line-height: 2;
+      color: var(--texte); margin-bottom: 40px;
+    }
+    .pres-valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .val-item {
+      padding: 24px; border: 1px solid var(--border);
+      transition: background .25s;
+    }
+    .val-item:hover { background: var(--soft); }
+    .val-sym {
+      font-family: var(--serif); font-size: 1.4rem;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .val-titre {
+      font-family: var(--sans); font-size: .75rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--fonce); margin-bottom: 8px;
+    }
+    .val-texte { font-size: .82rem; font-weight: 300; line-height: 1.75; color: var(--texte); }
+
+    /* ── PRESTATIONS ──────────────────────────────────────────── */
+    #prestations {
+      padding: 100px 0;
+      background: var(--fonce);
+    }
+    .prest-header { margin-bottom: 64px; }
+    .prest-eyebrow {
+      font-family: var(--sans); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .prest-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+    .prest-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--bg); line-height: 1.1;
+      letter-spacing: .03em;
+    }
+    .prest-title em { font-style: italic; color: var(--accent); }
+
+    .prest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: rgba(255,255,255,.06); }
+    .prest-cat {
+      background: #221E1C; padding: 36px 32px;
+      transition: background .25s;
+    }
+    .prest-cat:hover { background: #271F1D; }
+    .prest-cat-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px; padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .prest-icone {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(196,149,106,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--accent);
+    }
+    .prest-cat-nom {
+      font-family: var(--sans); font-size: .7rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--bg);
+    }
+    .prest-items { display: flex; flex-direction: column; gap: 16px; }
+    .prest-item {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .prest-nom { font-size: .85rem; font-weight: 300; color: rgba(250,247,242,.7); line-height: 1.4; flex: 1; }
+    .prest-detail { font-size: .7rem; color: rgba(250,247,242,.3); margin-top: 2px; }
+    .prest-prix {
+      font-family: var(--serif); font-size: .95rem; font-style: italic;
+      color: var(--accent); white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* ── AVIS ─────────────────────────────────────────────────── */
+    #avis {
+      padding: 100px 0;
+      background: var(--soft);
+    }
+    .avis-header { margin-bottom: 56px; }
+    .avis-eyebrow {
+      font-family: var(--sans); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .avis-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+    .avis-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--fonce); line-height: 1.1;
+    }
+    .avis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .avis-card {
+      background: var(--bg); padding: 36px 32px;
+      position: relative;
+    }
+    .avis-card::before {
+      content: '\201C';
+      position: absolute; top: 20px; left: 28px;
+      font-family: var(--serif); font-size: 5rem; font-weight: 300;
+      color: var(--soft); line-height: 1; pointer-events: none;
+    }
+    .avis-texte {
+      font-family: var(--serif); font-size: 1rem; font-style: italic;
+      line-height: 1.8; color: var(--texte);
+      margin-bottom: 24px; position: relative; z-index: 1;
+      padding-top: 24px;
+    }
+    .avis-sep {
+      width: 32px; height: 1px; background: var(--accent); margin-bottom: 14px;
+    }
+    .avis-auteur {
+      font-family: var(--sans); font-size: .7rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--fonce);
+    }
+
+    /* ── HORAIRES & CONTACT ───────────────────────────────────── */
+    #contact {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-eyebrow {
+      font-family: var(--sans); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .contact-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+    .contact-title {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300; color: var(--fonce); margin-bottom: 32px;
+      line-height: 1.1;
+    }
+    .contact-desc {
+      font-size: .88rem; font-weight: 300; line-height: 1.9;
+      color: var(--texte); margin-bottom: 40px;
+    }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px;
+    }
+    .contact-ic {
+      width: 38px; height: 38px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; flex-shrink: 0; color: var(--accent);
+      background: var(--soft);
+    }
+    .cdet strong {
+      font-family: var(--sans); font-size: .6rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--texte); display: block; margin-bottom: 3px;
+    }
+    .cdet a, .cdet span {
+      font-size: .88rem; color: var(--fonce); text-decoration: none;
+      transition: color .2s; font-weight: 300;
+    }
+    .cdet a:hover { color: var(--accent); }
+
+    /* horaires */
+    .horaires-title {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300; color: var(--fonce); margin-bottom: 32px;
+      line-height: 1.1;
+    }
+    .horaires-list { list-style: none; }
+    .horaire-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 0; border-bottom: 1px solid var(--border2);
+      font-size: .88rem; font-weight: 300;
+    }
+    .horaire-row:last-child { border-bottom: none; }
+    .horaire-jour { color: var(--fonce); letter-spacing: .04em; }
+    .horaire-heure { color: var(--accent); font-family: var(--serif); font-style: italic; }
+    .horaire-ferme { color: rgba(107,96,89,.4); font-style: italic; }
+
+    /* formulaire rdv */
+    .rdv-title {
+      font-family: var(--sans); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .rdv-title::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+    .rdv-form { display: flex; flex-direction: column; gap: 12px; }
+    .fg { display: flex; flex-direction: column; gap: 5px; }
+    .fg label {
+      font-family: var(--sans); font-size: .6rem; font-weight: 400;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--texte);
+    }
+    .fg input, .fg textarea, .fg select {
+      background: var(--soft); border: 1px solid transparent;
+      border-bottom: 1px solid var(--border2);
+      color: var(--fonce); font-family: var(--sans); font-size: .875rem; font-weight: 300;
+      padding: 11px 14px; transition: border-color .2s; width: 100%;
+      appearance: none;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus {
+      outline: none; border-bottom-color: var(--accent); background: var(--bg);
+    }
+    .fg textarea { resize: vertical; min-height: 90px; }
+    .fg select option { background: var(--bg); }
+    .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-submit {
+      font-family: var(--sans); font-size: .72rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      background: var(--fonce); color: var(--bg); border: none;
+      padding: 14px 28px; cursor: pointer; align-self: flex-start; margin-top: 4px;
+      transition: background .25s;
+    }
+    .form-submit:hover { background: var(--accent); }
+
+    /* ── CTA FLOTTANT ─────────────────────────────────────────── */
+    #cta-float {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: var(--fonce);
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      padding: 14px 28px;
+      transform: translateY(100%); transition: transform .4s;
+    }
+    #cta-float.visible { transform: translateY(0); }
+    #cta-float p {
+      font-family: var(--serif); font-size: .9rem; font-style: italic;
+      color: rgba(250,247,242,.45);
+    }
+    #cta-float a {
+      font-family: var(--sans); font-size: .7rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      background: var(--accent); color: var(--bg);
+      text-decoration: none; padding: 10px 22px;
+      transition: background .25s;
+    }
+    #cta-float a:hover { background: #b5825a; }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      background: var(--fonce);
+      padding: 40px 0;
+    }
+    footer .container {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 300;
+      color: rgba(250,247,242,.5); letter-spacing: .06em;
+    }
+    .footer-brand span { color: var(--accent); font-style: italic; }
+    .footer-copy {
+      font-family: var(--sans); font-size: .62rem; font-weight: 300;
+      color: rgba(250,247,242,.25); letter-spacing: .08em;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-family: var(--sans); font-size: .62rem; font-weight: 300;
+      color: rgba(250,247,242,.25); text-decoration: none; letter-spacing: .08em;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ───────────────────────────────────────────── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 130px 0 60px; }
+      .hero-left::after { display: none; }
+      .hero-right { display: none; }
+      .pres-inner { grid-template-columns: 1fr; gap: 40px; }
+      .pres-label { writing-mode: horizontal-tb; }
+      .contact-inner { grid-template-columns: 1fr; gap: 56px; }
+      .nav-links, .nav-rdv { display: none; }
+      .burger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      #hero { padding: 0 24px; }
+      .hero-left { padding: 110px 0 56px; }
+      .pres-valeurs { grid-template-columns: 1fr; }
+      .form-row2 { grid-template-columns: 1fr; }
+      .prest-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── CTA FLOTTANT ─────────────────────────────────────────── -->
+  <div id="cta-float">
+    <p id="cta-label">Prenez soin de vous</p>
+    <a href="#contact">Réserver →</a>
+  </div>
+
+  <!-- ── MOBILE MENU ──────────────────────────────────────────── -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mob-close" id="close-menu">✕</button>
+    <a href="#presentation" class="ml">L'atelier</a>
+    <a href="#prestations"  class="ml">Prestations</a>
+    <a href="#avis"         class="ml">Avis</a>
+    <a href="#contact"      class="ml">Réserver</a>
+  </div>
+
+  <!-- ── NAV ─────────────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <span class="logo-nom" id="logo-nom">Atelier</span>
+        <span class="logo-metier" id="logo-metier">métier • ville</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#presentation">L'atelier</a></li>
+        <li><a href="#prestations">Prestations</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-rdv">Réserver</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container" style="display:contents">
+      <div class="hero-left">
+        <p class="hero-eyebrow" id="hero-eyebrow">métier — ville</p>
+        <h1 class="hero-h1" id="hero-h1">
+          Nom<br/><em>Accroche</em>
+        </h1>
+        <p class="hero-desc" id="hero-desc">description</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-creme">Prendre rendez-vous</a>
+          <a href="" class="btn-tel" id="hero-tel">Appeler directement</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-ornament">
+          <span class="ornament-sym">✦</span>
+        </div>
+        <div class="hero-right-text">
+          <p class="hero-right-quote" id="hero-quote">"accroche"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRÉSENTATION ─────────────────────────────────────────── -->
+  <section id="presentation">
+    <div class="container">
+      <div class="pres-inner reveal">
+        <div><p class="pres-label" id="pres-label">L'atelier</p></div>
+        <div>
+          <h2 class="pres-title" id="pres-title">Un espace pensé<br/>pour <em>prendre soin</em></h2>
+          <p class="pres-texte" id="pres-texte">description</p>
+          <div class="pres-valeurs" id="pres-valeurs"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRESTATIONS ──────────────────────────────────────────── -->
+  <section id="prestations">
+    <div class="container">
+      <div class="prest-header reveal">
+        <p class="prest-eyebrow">Ce que nous proposons</p>
+        <h2 class="prest-title">Nos <em>prestations</em></h2>
+      </div>
+      <div class="prest-grid reveal" id="prest-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── AVIS ─────────────────────────────────────────────────── -->
+  <section id="avis">
+    <div class="container">
+      <div class="avis-header reveal">
+        <p class="avis-eyebrow">Elles en parlent</p>
+        <h2 class="avis-title">Ce que nos clientes<br/>disent de nous</h2>
+      </div>
+      <div class="avis-grid reveal" id="avis-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ──────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="reveal">
+          <p class="contact-eyebrow">Nous trouver</p>
+          <h2 class="contact-title" id="contact-title">Horaires<br/>& contact</h2>
+          <p class="contact-desc" id="contact-desc">description</p>
+          <div id="cinfos"></div>
+          <ul class="horaires-list" id="horaires-list" style="margin-top:32px"></ul>
+        </div>
+        <div class="reveal">
+          <p class="rdv-title">Demande de rendez-vous</p>
+          <div class="rdv-form" id="rdv-form"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand" id="footer-brand">Nom <span>·</span> métier</div>
+      <p class="footer-copy" id="footer-copy"></p>
+      <div class="footer-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPT ───────────────────────────────────────────────── -->
+  <script>
+  (function () {
+    const root = document.documentElement;
+    root.style.setProperty('--bg',     CLIENT.couleurBg);
+    root.style.setProperty('--fonce',  CLIENT.couleurFonce);
+    root.style.setProperty('--accent', CLIENT.couleurAccent);
+    root.style.setProperty('--soft',   CLIENT.couleurSoft);
+    root.style.setProperty('--texte',  CLIENT.couleurTexte);
+
+    const telClean = CLIENT.tel.replace(/\s/g, '');
+
+    /* Nav */
+    document.getElementById('logo-nom').textContent    = CLIENT.nom;
+    document.getElementById('logo-metier').textContent = `${CLIENT.metier.toLowerCase()} • ${CLIENT.ville.toLowerCase()}`;
+
+    /* Hero */
+    document.getElementById('hero-eyebrow').textContent = `${CLIENT.metier} — ${CLIENT.ville}, ${CLIENT.departement}`;
+    const h1 = document.getElementById('hero-h1');
+    h1.innerHTML = `${CLIENT.nom}<br/><em>${CLIENT.accroche}</em>`;
+    document.getElementById('hero-desc').textContent   = CLIENT.description;
+    document.getElementById('hero-tel').textContent    = `Appeler le ${CLIENT.tel}`;
+    document.getElementById('hero-tel').href           = `tel:${telClean}`;
+    document.getElementById('hero-quote').textContent  = `« ${CLIENT.accroche} »`;
+
+    /* Présentation */
+    document.getElementById('pres-label').textContent = CLIENT.nom;
+    document.getElementById('pres-texte').textContent = CLIENT.description;
+    document.getElementById('pres-valeurs').innerHTML = CLIENT.valeurs.map(v => `
+      <div class="val-item">
+        <div class="val-sym">${v.sym}</div>
+        <div class="val-titre">${v.titre}</div>
+        <div class="val-texte">${v.texte}</div>
+      </div>`).join('');
+
+    /* Prestations */
+    document.getElementById('prest-grid').innerHTML = CLIENT.services.map(cat => `
+      <div class="prest-cat">
+        <div class="prest-cat-head">
+          <div class="prest-icone">${cat.icone}</div>
+          <div class="prest-cat-nom">${cat.categorie}</div>
+        </div>
+        <div class="prest-items">
+          ${cat.items.map(item => `
+            <div class="prest-item">
+              <div>
+                <div class="prest-nom">${item.nom}</div>
+                <div class="prest-detail">${item.detail}</div>
+              </div>
+              <div class="prest-prix">${item.prix}</div>
+            </div>`).join('')}
+        </div>
+      </div>`).join('');
+
+    /* Avis */
+    document.getElementById('avis-grid').innerHTML = CLIENT.avis.map(a => `
+      <div class="avis-card">
+        <p class="avis-texte">${a.texte}</p>
+        <div class="avis-sep"></div>
+        <div class="avis-auteur">${a.auteur}</div>
+      </div>`).join('');
+
+    /* Contact */
+    document.getElementById('contact-desc').textContent =
+      `Retrouvez ${CLIENT.nom} au cœur de ${CLIENT.ville}. Réservation conseillée pour garantir votre créneau.`;
+    document.getElementById('cinfos').innerHTML = `
+      <div class="contact-item">
+        <div class="contact-ic">✆</div>
+        <div class="cdet"><strong>téléphone</strong><a href="tel:${telClean}">${CLIENT.tel}</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ic">✉</div>
+        <div class="cdet"><strong>email</strong><a href="mailto:${CLIENT.email}">${CLIENT.email}</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ic">◎</div>
+        <div class="cdet"><strong>adresse</strong><span>${CLIENT.adresse}</span></div>
+      </div>`;
+
+    document.getElementById('horaires-list').innerHTML = CLIENT.horaires.map(h => `
+      <li class="horaire-row">
+        <span class="horaire-jour">${h.jour}</span>
+        <span class="${h.heure === 'Fermé' ? 'horaire-ferme' : 'horaire-heure'}">${h.heure}</span>
+      </li>`).join('');
+
+    /* Formulaire RDV */
+    const srvOptions = CLIENT.services.map(cat =>
+      `<optgroup label="${cat.categorie}">${cat.items.map(i => `<option>${i.nom}</option>`).join('')}</optgroup>`
+    ).join('');
+    document.getElementById('rdv-form').innerHTML = `
+      <div class="form-row2">
+        <div class="fg"><label>Prénom & nom</label><input type="text" placeholder="Marie Dupont" /></div>
+        <div class="fg"><label>Téléphone</label><input type="tel" placeholder="06 xx xx xx xx" /></div>
+      </div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="marie@email.fr" /></div>
+      <div class="fg"><label>Prestation souhaitée</label><select><option value="">Choisir…</option>${srvOptions}</select></div>
+      <div class="fg"><label>Disponibilités</label><input type="text" placeholder="Ex : mardi ou jeudi après-midi" /></div>
+      <div class="fg"><label>Message (optionnel)</label><textarea placeholder="Précisez votre demande…"></textarea></div>
+      <button class="form-submit">Envoyer la demande →</button>`;
+
+    /* Footer */
+    document.getElementById('footer-brand').innerHTML = `${CLIENT.nom} <span>·</span> ${CLIENT.metier}`;
+    document.getElementById('footer-copy').textContent =
+      `© ${new Date().getFullYear()} ${CLIENT.nom} — ${CLIENT.ville} — SIREN ${CLIENT.siren}`;
+
+    /* Scroll */
+    const nav = document.getElementById('nav');
+    const cta = document.getElementById('cta-float');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      cta.classList.toggle('visible',  window.scrollY > 500);
+    });
+
+    /* Reveal */
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.07 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* Burger */
+    const burger = document.getElementById('burger');
+    const mm     = document.getElementById('mobile-menu');
+    const close  = () => { mm.classList.remove('open'); burger.classList.remove('open'); };
+    burger.addEventListener('click', () => { mm.classList.toggle('open'); burger.classList.toggle('open'); });
+    document.getElementById('close-menu').addEventListener('click', close);
+    document.querySelectorAll('.ml').forEach(l => l.addEventListener('click', close));
+  })();
+  </script>
+
+</body>
+</html>
