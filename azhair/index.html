@@ -12,7 +12,7 @@ const CLIENT = {
   nom:            "AZ Hair Transformation Visagiste",
   metier:         "Coiffeur Visagiste & Extensions Capillaires",
   accroche:       "18 ans d'expertise pour des cheveux qui vous ressemblent vraiment",
-  description:    "Installé à Annemasse, aux portes de Genève, AZ Hair est un salon spécialisé dans la coloration, les soins capillaires et les extensions 100 % naturelles, adaptés à toutes les textures de cheveux. Coiffeur visagiste de formation, AZ Hair propose des prestations sur-mesure alliant techniques expertes et produits végétaux enrichis en protéines de soie et tanin végétal. Longueur, volume, coloration : chaque transformation est pensée pour un résultat ultra naturel, durable et respectueux de la santé du cheveu.",
+  description:    "Installé à Annemasse, aux portes de Genève, AZ Hair est un salon spécialisé dans la coloration, les soins capillaires et les extensions sur toutes textures de cheveux. Coiffeur visagiste de formation, AZ Hair vous propose des prestations entièrement personnalisées, réalisées avec des produits végétaux enrichis en protéines de soie et en tanin végétal. Extensions adhésives, K-Tips, wefts ou anneaux : chaque pose est pensée pour préserver la santé du cheveu et garantir un résultat ultra naturel.",
   ville:          "Annemasse",
   departement:    "Haute-Savoie",
   tel:            "",
@@ -20,7 +20,6 @@ const CLIENT = {
   adresse:        "1 rue Fernand David, 74100 Annemasse",
   siren:          "",
   anneeCreation:  2006,
-
   horaires: [
     { jour: "Lundi",    heure: "10h – 19h" },
     { jour: "Mardi",    heure: "10h – 19h" },
@@ -30,59 +29,52 @@ const CLIENT = {
     { jour: "Samedi",   heure: "10h – 19h" },
     { jour: "Dimanche", heure: "Fermé" }
   ],
-
-  couleurBg:      "#1A1118",
-  couleurFonce:   "#0F0B0E",
-  couleurAccent:  "#C4835A",
-  couleurSoft:    "#2E1F29",
-  couleurTexte:   "#A0868E",
-
+  couleurBg:      "#F9F6F3",
+  couleurFonce:   "#1A1410",
+  couleurAccent:  "#A0622B",
+  couleurSoft:    "#EDE3D8",
+  couleurTexte:   "#5C4D42",
   services: [
-    {
-      categorie: "Extensions Capillaires",
-      icone: "💎",
-      items: [
-        { nom: "Pose extensions adhésives", prix: "À partir de 180€", detail: "Mèches 100 % naturelles, intégration invisible, résultat ultra naturel" },
-        { nom: "Pose extensions K-Tips / kératine", prix: "À partir de 200€", detail: "Fixation à la kératine, légèreté maximale, idéales pour cheveux fins" },
-        { nom: "Pose extensions à l'anneau (wefts & rajouts)", prix: "À partir de 160€", detail: "Pose sans chaleur, anneau discret, adaptée aux cheveux bouclés & afro" },
-        { nom: "Dépose extensions adhésives", prix: "À partir de 60€", detail: "Retrait soigneux, sans casse, soin hydratant inclus" },
-        { nom: "Dépose extensions kératine", prix: "À partir de 60€", detail: "Dissolution douce, préservation de la fibre capillaire" }
-      ]
-    },
     {
       categorie: "Coloration & Soins",
       icone: "🎨",
       items: [
-        { nom: "Coloration végétale personnalisée", prix: "À partir de 65€", detail: "Tanin végétal & protéines de soie, couvre les blancs, respecte le cuir chevelu" },
-        { nom: "Balayage & Mèches", prix: "À partir de 80€", detail: "Effet naturel ou contrasté, technique adaptée à chaque texture" },
-        { nom: "Soin restructurant en profondeur", prix: "À partir de 40€", detail: "Protéines de soie, hydratation intense, stimulation de la pousse" },
-        { nom: "Lissage & Brushing visagiste", prix: "À partir de 35€", detail: "Mise en forme selon la morphologie du visage, finition longue durée" }
+        { nom: "Coloration végétale personnalisée", prix: "À partir de 65€", detail: "Colorants enrichis en tanin végétal et protéines de soie, pour un résultat lumineux et durable" },
+        { nom: "Balayage / Mèches", prix: "À partir de 80€", detail: "Technique adaptée à votre texture et à l'effet naturel souhaité" },
+        { nom: "Soin restructurant en profondeur", prix: "À partir de 40€", detail: "Traitement hydratant intense, stimule la pousse et limite la casse" }
       ]
     },
     {
       categorie: "Coupe & Coiffage",
       icone: "✂",
       items: [
-        { nom: "Coupe femme avec conseil visagiste", prix: "À partir de 45€", detail: "Analyse morphologique, coupe adaptée au visage et à la texture" },
-        { nom: "Coupe & Brushing", prix: "À partir de 55€", detail: "Coupe + mise en forme soignée, résultat immédiat" },
-        { nom: "Coiffage événementiel", prix: "Sur devis", detail: "Chignons, ondulations, coiffures de mariée ou de soirée sur-mesure" }
+        { nom: "Coupe visagiste femme", prix: "À partir de 45€", detail: "Coupe personnalisée selon la morphologie du visage et la texture des cheveux" },
+        { nom: "Brushing & Mise en forme", prix: "À partir de 30€", detail: "Finition professionnelle avec produits coiffants adaptés à chaque type de cheveu" }
+      ]
+    },
+    {
+      categorie: "Extensions Capillaires",
+      icone: "💫",
+      items: [
+        { nom: "Pose extensions adhésives", prix: "Sur devis", detail: "Extensions 100 % naturelles, posées mèche par mèche pour un résultat invisible et personnalisé" },
+        { nom: "Pose extensions K-Tips / Kératine", prix: "Sur devis", detail: "Fixation à la kératine, idéale pour une tenue longue durée, adaptée à toutes les textures" },
+        { nom: "Pose extensions à l'anneau (wefts & rajouts)", prix: "Sur devis", detail: "Technique sans chaleur ni colle, respectueuse du cheveu naturel" },
+        { nom: "Dépose extensions adhésives", prix: "Sur devis", detail: "Dépose soigneuse avec produits respectueux de la fibre capillaire" },
+        { nom: "Dépose extensions kératine", prix: "Sur devis", detail: "Retrait en douceur, suivi d'un soin de reconstruction si besoin" }
       ]
     }
   ],
-
   valeurs: [
-    { sym: "①", titre: "18 ans d'expertise", texte: "Une maîtrise technique solide, affinée au fil des années, pour des résultats fiables quelle que soit la texture de vos cheveux." },
-    { sym: "②", titre: "Extensions 100 % naturelles", texte: "Des mèches soigneusement sélectionnées, intégrées sur-mesure pour un rendu indétectable et un confort quotidien." },
-    { sym: "③", titre: "Produits végétaux haute qualité", texte: "Formules enrichies en protéines de soie et tanin végétal, pour nourrir, renforcer et protéger la fibre capillaire en profondeur." },
-    { sym: "④", titre: "Approche visagiste personnalisée", texte: "Chaque prestation est pensée selon votre morphologie, votre texture et vos envies — pour un résultat qui vous correspond vraiment." }
+    { sym: "①", titre: "18 ans d'expérience", texte: "Une maîtrise des techniques capillaires acquise sur toutes les textures de cheveux, des plus fins aux plus épais." },
+    { sym: "②", titre: "Produits végétaux & naturels", texte: "Protéines de soie, tanin végétal, formules sans agressif : vos cheveux sont soignés autant qu'embellis." },
+    { sym: "③", titre: "Extensions 100 % naturelles", texte: "Chaque pose d'extension est sur mesure — longueur, volume, couleur — pour un résultat indétectable." },
+    { sym: "④", titre: "Santé du cheveu avant tout", texte: "Chaque prestation est pensée pour préserver et renforcer votre fibre capillaire sur le long terme." }
   ],
-
   avis: [
-    { auteur: "Sabrina M.", texte: "J'ai fait poser des extensions adhésives et le résultat est bluffant. Personne ne voit la différence avec mes vrais cheveux. Le salon est chaleureux et on prend vraiment le temps de me conseiller." },
-    { auteur: "Inès K.", texte: "Coloration végétale impeccable, tient parfaitement dans le temps. Pour la première fois depuis des années, mes cheveux sont en bonne santé après une coloration. Je ne vais nulle part ailleurs." },
-    { auteur: "Priscilla R.", texte: "Coupe et brushing top, mais surtout un vrai regard de visagiste — la coupe est taillée pour mon visage, pas copiée d'une photo. Je recommande à toutes mes amies à Annemasse et alentour." }
+    { auteur: "Samira K.", texte: "J'ai fait une pose d'extensions K-Tips chez AZ Hair et le résultat est bluffant. Mes cheveux ont l'air naturels à 100%, personne ne voit la différence. Le soin apporté à chaque mèche est impressionnant." },
+    { auteur: "Lucie B.", texte: "Première fois que je trouve un coiffeur qui comprend vraiment ma texture de cheveux. La coloration est exactement ce que je voulais, et mes cheveux sont en bien meilleur état qu'avant. Je reviendrai sans hésiter." },
+    { auteur: "Nadia M.", texte: "Salon très professionnel, ambiance agréable et conseils vraiment personnalisés. La dépose de mes anciennes extensions s'est faite sans aucun dommage. Un vrai savoir-faire, je recommande à toutes mes amies." }
   ],
-
   reseaux: {
     instagram: "https://www.instagram.com/az_hair_visagiste/",
     facebook:  "#"
